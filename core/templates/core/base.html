@@ -1,0 +1,129 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <style>
+        .hidden{
+            display:none;
+        }
+        .jumbotron{
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="regForm" method="POST" class="jumbotron">
+            {% csrf_token %}
+            <h1>Register:</h1>
+            <!-- One "tab" for each step in the form: -->
+            
+            <div class="tab1">Name:
+				<p>{{ form.name }}</p>
+				Address:
+				<p>{{ form.address }}</p>
+				Phone:
+				<p>{{ form.phone }}</p>
+				Email:
+				<p>{{ form.email }}</p>
+
+				<input type="button" class="btn btn-primary" id="nextBtn1" value="Next">
+            </div>
+
+            <div class="tab2 hidden">Your Description:
+                <p>{{ form.bio }}</p>
+                Language:
+                <p>{{ form.language }}</p>
+                Intrest:
+                <p>{{ form.intrest }}</p>
+
+				<input type="button" class="btn btn-primary" id="prevBtn2" value="Prev">
+				<input type="button" class="btn btn-primary" id="nextBtn2" value="Next">
+            </div>
+
+            <div class="tab3 hidden">College Name:
+                <p>{{ form.college_name }}</p>
+                Degree:
+                <p>{{ form.degree_name }}</p>
+                Passed Date:
+                <p>{{ form.degree_passed_date }}</p>
+
+				<input type="button" class="btn btn-primary" id="prevBtn3" value="Prev">
+				<input type="button" class="btn btn-primary" id="nextBtn3" value="Next">
+            </div>
+
+            <div class="tab4 hidden">Job:
+                <p>{{ form.job_title }}</p>
+                Job Date:
+                <p>{{ form.job_date }}</p>
+                company Name:
+                <p>{{ form.company_name }}</p>
+                Company address:
+                <p>{{ form.company_address }}</p>
+                Job_description:
+                <p>{{ form.job_description }}</p>
+
+				<input type="button" class="btn btn-primary" id="prevBtn4" value="Prev">
+				<input type="button" class="btn btn-primary" id="nextBtn4" value="Next">
+            </div>
+
+            <div class="tab5 hidden">Skill:
+                <p>{{ form.skill }}</p>
+                Certification:
+                <p>{{ form.certification }}</p>
+
+				<input type="button" class="btn btn-primary" id="prevBtn5" value="Prev">
+				<input type="submit" class="btn btn-success submitBtn" value="Submit">
+
+            </div>
+          </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+			$("#nextBtn1").click(function(){
+                $('.tab1').addClass('hidden');
+                $('.tab2').removeClass('hidden');
+			});
+            $("#nextBtn2").click(function(){
+                $('.tab2').addClass('hidden');
+                $('.tab3').removeClass('hidden');
+			});
+            $("#nextBtn3").click(function(){
+                $('.tab3').addClass('hidden');
+                $('.tab4').removeClass('hidden');
+			});
+            $("#nextBtn4").click(function(){
+                $('.tab4').addClass('hidden');
+                $('.tab5').removeClass('hidden');
+			});
+            //prevBtn
+            $("#prevBtn2").click(function(){
+                $('.tab2').addClass('hidden');
+                $('.tab1').removeClass('hidden');
+			});
+            $("#prevBtn3").click(function(){
+                $('.tab3').addClass('hidden');
+                $('.tab2').removeClass('hidden');
+			});
+            $("#prevBtn4").click(function(){
+                $('.tab4').addClass('hidden');
+                $('.tab3').removeClass('hidden');
+			});
+            $("#prevBtn5").click(function(){
+                $('.tab5').addClass('hidden');
+                $('.tab4').removeClass('hidden');
+			});
+		});
+    </script>
+    
+</body>
+</html>
